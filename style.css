@@ -1,0 +1,15 @@
+
+:root{
+--clay:#B66A42;--olive:#6D7450;--lime:#F3EEE6;--char:#35302C;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--lime);color:var(--char);line-height:1.7}
+nav{display:flex;justify-content:space-between;padding:28px 8vw;font-size:.95rem}
+.logo{font-family:"Cormorant Garamond",serif;font-size:2rem}
+.hero{min-height:100vh;padding:0 8vw;background:linear-gradient(rgba(243,238,230,.8),rgba(243,238,230,.95)),url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80') center/cover}
+.hero-inner{max-width:720px;padding-top:18vh}
+h1,h2,h3{font-family:"Cormorant Garamond",serif}
+h1{font-size:4rem;margin-bottom:.3em}
+section,footer{padding:90px 8vw;max-width:1000px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.btn{display:inline-block;background:var(--clay);color:white;padding:14px 22px;text-decoration:none;border-radius:4px}
+@media(max-width:700px){h1{font-size:2.5rem}nav{flex-direction:column;gap:10px}}
