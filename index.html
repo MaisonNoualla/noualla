@@ -1,287 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Noualla | Reviving the Soul of Rural Morocco</title>
-
-<meta name="description" content="Noualla is a regenerative rural retreat in northern Morocco where nature, craftsmanship and hospitality come together.">
-
+<title>Noualla — A degraded hillside becoming a living ecosystem</title>
+<meta name="description" content="Noualla is a regenerative rural retreat in the Rif foothills of northern Morocco, transforming a once-degraded hillside into a living landscape and a small-scale, community-rooted hospitality model.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2a231d; --ink-soft:#5a5147;
+    --paper:#ece2ce; --paper-deep:#e2d5b9;
+    --olive:#666b47; --olive-dark:#42452c;
+    --clay:#a1512c; --blue:#2c565a; --lavender:#8f7391;
+    --line: rgba(42,35,29,0.16); --line-strong: rgba(42,35,29,0.32);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}}
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em; color:var(--ink);}
+  a{color:inherit; text-decoration:none;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--olive-dark); display:flex; align-items:center; gap:0.6em;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--olive-dark); display:inline-block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(20px, 5vw, 64px);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .cap{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.04em; color:var(--ink-soft); margin-top:8px;}
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  /* NAV */
+  header{position:fixed; top:0; left:0; right:0; z-index:50; padding:22px 0; transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease; border-bottom:1px solid transparent;}
+  header.scrolled{background:rgba(236,226,206,0.92); backdrop-filter:blur(6px); padding:14px 0; border-bottom:1px solid var(--line);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{font-family:'Fraunces', serif; font-size:1.25rem; letter-spacing:0.02em; display:flex; align-items:baseline; gap:8px;}
+  .brand .dot{color:var(--clay); font-size:0.7em;}
+  nav.links{display:flex; gap:28px; font-size:0.85rem; letter-spacing:0.02em;}
+  nav.links a{position:relative; padding-bottom:3px; color:var(--ink-soft);}
+  nav.links a:hover{color:var(--ink);}
+  nav.links a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--clay); transition:width 0.25s ease;}
+  nav.links a:hover::after{width:100%;}
+  @media (max-width:800px){ nav.links{display:none;} }
 
-<link rel="stylesheet" href="style.css">
+  /* HERO */
+  .hero{position:relative; min-height:100svh; display:flex; flex-direction:column; justify-content:flex-end; padding-top:140px; padding-bottom:56px; overflow:hidden;}
+  .hero-bg{position:absolute; inset:0; z-index:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover;}
+  .hero-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(23,19,14,0.15) 0%, rgba(23,19,14,0.35) 55%, rgba(20,17,12,0.86) 100%);}
+  .contours{position:absolute; inset:0; z-index:1; opacity:0.5; pointer-events:none; mix-blend-mode:screen;}
+  .contours svg{width:100%; height:100%; display:block;}
+  .hero-inner{position:relative; z-index:2; color:#f3ecd9;}
+  .hero .eyebrow{margin-bottom:22px; color:#d9d0b3;}
+  .hero .eyebrow::before{background:#d9d0b3;}
+  .hero h1{font-size:clamp(2.3rem, 5.6vw, 4.3rem); line-height:1.06; max-width:15ch; font-weight:400; color:#f7f1e0;}
+  .hero h1 em{font-style:italic; color:#e2a37a; font-weight:400;}
+  .hero .sub{margin-top:24px; max-width:48ch; font-size:1.08rem; color:#e2dcc4;}
+  .hero .statement{margin-top:16px; font-family:'Fraunces', serif; font-style:italic; font-size:1.15rem; color:#cbb98f;}
+  .hero-actions{margin-top:36px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; padding:14px 24px; border:1px solid #f3ecd9; color:#f3ecd9; display:inline-block; transition:background 0.25s ease, color 0.25s ease;}
+  .btn.primary{background:#f3ecd9; color:var(--ink);}
+  .btn.primary:hover{background:var(--clay); border-color:var(--clay); color:#f3ecd9;}
+  .btn.ghost:hover{background:#f3ecd9; color:var(--ink);}
+  .stat-strip{margin-top:56px; display:flex; gap:0; border-top:1px solid rgba(243,236,217,0.3); flex-wrap:wrap;}
+  .stat{flex:1; min-width:150px; padding:18px 22px 0 0; border-right:1px solid rgba(243,236,217,0.16);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:'Fraunces', serif; font-size:1.9rem; color:#f7f1e0;}
+  .stat .label{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:#cbc2a2; margin-top:4px;}
 
+  /* SECTION GENERIC */
+  section{position:relative; padding:110px 0;}
+  .section-head{max-width:58ch; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.85rem, 3.2vw, 2.6rem); margin-top:16px; font-weight:400;}
+  .section-head p.lede{margin-top:16px; color:var(--ink-soft); font-size:1.03rem; max-width:54ch;}
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .ph{background:#d9cba8; overflow:hidden; position:relative;}
+
+  /* TRANSFORMATION */
+  .transform{background:var(--paper);}
+  .tf-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  @media (max-width:900px){.tf-grid{grid-template-columns:1fr;}}
+  .tf-text p{margin-bottom:16px; color:var(--ink-soft);}
+  .tf-text p strong{color:var(--ink); font-weight:600;}
+  .impact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:32px; border-top:1px solid var(--line-strong);}
+  @media (max-width:640px){.impact-grid{grid-template-columns:1fr 1fr;}}
+  .impact{padding:16px 16px 0 0; border-right:1px solid var(--line);}
+  .impact:last-child{border-right:none;}
+  .impact .n{font-family:'Fraunces',serif; font-size:1.6rem; color:var(--olive-dark);}
+  .impact .l{font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); margin-top:4px;}
+  .compare-photos{display:grid; grid-template-columns:1fr 1fr; gap:2px;}
+  .compare-photos .ph{aspect-ratio:4/5;}
+  .compare-photos .tag{position:absolute; top:14px; left:14px; font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(20,17,12,0.55); color:#f3ecd9; padding:5px 10px;}
+  .support-photo{margin-top:2px; aspect-ratio:16/7;}
+
+  /* WHY + EXPERIENCE */
+  .why{background:var(--paper-deep);}
+  .why-lede{max-width:64ch; font-size:1.15rem; font-family:'Fraunces', serif; font-weight:400; color:var(--ink); line-height:1.45; margin-bottom:20px;}
+  .why p{color:var(--ink-soft); margin-bottom:14px; max-width:64ch;}
+  .exp-list{display:flex; flex-direction:column; margin-top:56px;}
+  .exp-item{border-top:1px solid var(--line-strong); padding:40px 0; display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;}
+  .exp-item:last-child{border-bottom:1px solid var(--line-strong);}
+  .exp-item.flip .exp-photo{order:2;}
+  .exp-item.flip .exp-copy{order:1;}
+  @media (max-width:820px){.exp-item, .exp-item.flip{grid-template-columns:1fr;} .exp-item.flip .exp-photo, .exp-item.flip .exp-copy{order:unset;}}
+  .exp-copy h3{font-size:1.4rem; font-weight:400;}
+  .exp-copy p{color:var(--ink-soft); margin-top:12px; max-width:46ch;}
+  .exp-photo .ph{aspect-ratio:4/3;}
+  .exp-photo.trio{display:grid; grid-template-columns:1fr 1fr; gap:4px;}
+  .exp-photo.trio .ph:first-child{grid-column:1/3; aspect-ratio:16/9;}
+  .exp-photo.trio .ph{aspect-ratio:1/1;}
+  .exp-item.no-photo{grid-template-columns:1fr;}
+  .exp-item.no-photo .exp-copy{max-width:60ch;}
+
+  /* SMALL BY CHOICE */
+  .small{background:var(--paper);}
+  .phase-cards{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line-strong); border:1px solid var(--line-strong); margin-top:24px;}
+  @media (max-width:560px){.phase-cards{grid-template-columns:1fr;}}
+  .phase-card{background:var(--paper); padding:26px 24px;}
+  .phase-card .tag2{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clay);}
+  .phase-card .units{font-family:'Fraunces', serif; font-size:2.1rem; margin-top:10px;}
+  .phase-card .units span{font-size:1rem; color:var(--ink-soft); font-family:'Inter', sans-serif;}
+  .phase-card p{margin-top:10px; font-size:0.88rem; color:var(--ink-soft);}
+  .build-photos{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:44px;}
+  @media (max-width:700px){.build-photos{grid-template-columns:1fr;}}
+  .build-photos .ph{aspect-ratio:4/3;}
+
+  /* PILLARS (Green / Community) */
+  .pillars{background:var(--olive-dark); color:#efe9d8;}
+  .pillars .eyebrow{color:#c9c39f;} .pillars .eyebrow::before{background:#c9c39f;}
+  .pillars .section-head h2{color:#f4efe0;}
+  .pillars .section-head p.lede{color:#cfc9ae;}
+  .pillar{border-top:1px solid rgba(239,233,216,0.18); padding:48px 0;}
+  .pillar:last-child{border-bottom:1px solid rgba(239,233,216,0.18);}
+  .pillar-top{display:grid; grid-template-columns:280px 1fr; gap:40px;}
+  @media (max-width:820px){.pillar-top{grid-template-columns:1fr; gap:14px;}}
+  .pillar .numlabel{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:#a7d0c9; letter-spacing:0.06em;}
+  .pillar h3{font-size:1.5rem; margin-top:10px; color:#f4efe0; font-weight:400;}
+  .pillar .tagline{display:inline-block; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; padding:5px 10px; border:1px solid rgba(239,233,216,0.35); color:#e3ddc4;}
+  .pillar-body p{color:#d7d2ba; margin-bottom:14px; max-width:62ch;}
+  .status-split{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px;}
+  @media (max-width:600px){.status-split{grid-template-columns:1fr;}}
+  .status-col .stag{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;}
+  .status-col.now .stag{color:#a7d0c9;} .status-col.next .stag{color:#e0b28f;}
+  .status-col ul{list-style:none; margin-top:10px;}
+  .status-col li{padding:4px 0; font-size:0.92rem; color:#d7d2ba;}
+  .pillar-photos{display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:26px;}
+  @media (max-width:640px){.pillar-photos{grid-template-columns:1fr 1fr;}}
+  .pillar-photos .ph{aspect-ratio:1/1;}
+  .pillar-photo-single{margin-top:26px;}
+  .pillar-photo-single .ph{aspect-ratio:16/9;}
+
+  /* NAME */
+  .name{background:var(--paper);}
+  .name-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  @media (max-width:860px){.name-grid{grid-template-columns:1fr;}}
+  .name-text p{color:var(--ink-soft); margin-bottom:16px; max-width:52ch;}
+  .name-text p strong{color:var(--ink); font-weight:600;}
+  .name-photo .ph{aspect-ratio:4/3;}
+
+  /* LOCATION */
+  .land{background:var(--paper-deep);}
+  .land-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+  @media (max-width:860px){.land-grid{grid-template-columns:1fr;}}
+  .distances{list-style:none;}
+  .distances li{display:flex; justify-content:space-between; align-items:baseline; padding:13px 0; border-bottom:1px solid var(--line); font-size:0.98rem;}
+  .distances li .km{font-family:'IBM Plex Mono', monospace; color:var(--ink-soft); font-size:0.85rem;}
+  .infra-list{list-style:none; margin-top:24px;}
+  .infra-list li{padding:6px 0; font-size:0.92rem; color:var(--ink-soft); display:flex; gap:10px;}
+  .infra-list li .ck{color:var(--olive); font-family:'IBM Plex Mono', monospace;}
+  .site-photo .ph{aspect-ratio:3/4;}
+
+  /* TIMELINE */
+  .timeline{background:var(--paper);}
+  .tl-row{display:grid; grid-template-columns:120px 1fr; gap:28px; padding:26px 0; border-top:1px solid var(--line-strong);}
+  .tl-row:last-child{border-bottom:1px solid var(--line-strong);}
+  @media (max-width:600px){.tl-row{grid-template-columns:1fr; gap:6px;}}
+  .tl-row .when{font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--clay); padding-top:2px;}
+  .tl-row h4{font-size:1.15rem; font-weight:500;}
+  .tl-row p{color:var(--ink-soft); margin-top:6px; max-width:60ch; font-size:0.95rem;}
+
+  /* FOUNDER */
+  .founder{background:var(--paper-deep);}
+  .founder-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;}
+  @media (max-width:860px){.founder-grid{grid-template-columns:1fr;}}
+  .founder-text p{color:var(--ink-soft); margin-bottom:16px;}
+  .founder-tag{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;}
+  .founder-tag span{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; border:1px solid var(--line-strong); padding:5px 10px; color:var(--ink-soft);}
+  .founder-photo .ph{aspect-ratio:3/4;}
+
+  /* CLOSING */
+  .closing{position:relative; color:#f3ecd9;}
+  .closing-bg{position:absolute; inset:0; z-index:0;}
+  .closing-bg img{width:100%; height:100%; object-fit:cover;}
+  .closing-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,15,11,0.55), rgba(18,15,11,0.86));}
+  .closing .wrap{position:relative; z-index:1; padding-top:110px; padding-bottom:110px;}
+  .closing .eyebrow{color:#cbb98f;} .closing .eyebrow::before{background:#cbb98f;}
+  .closing h2{color:#f7f1e0; font-size:clamp(1.9rem,3.4vw,2.6rem); max-width:22ch; font-weight:400;}
+  .closing-lines{margin-top:28px;}
+  .closing-lines p{font-family:'Fraunces', serif; font-size:1.2rem; color:#e9e0c4; margin-bottom:10px;}
+  .cta-row{margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;}
+  .closing .btn.primary{background:var(--clay); border-color:var(--clay); color:#f7f1e0;}
+  .closing .btn.primary:hover{background:#c9885f; border-color:#c9885f;}
+
+  footer{background:var(--ink); color:#a79c86; padding:36px 0 40px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  footer .fbrand{font-family:'Fraunces', serif; color:#f3ecd9; font-size:1rem;}
+  footer .fline{font-size:0.82rem;}
+</style>
 </head>
-
 <body>
 
-<header>
-
-<nav class="nav">
-
-<div class="logo">
-
-<div class="logo-symbol">
-
-N
-
-</div>
-
-<span>Noualla</span>
-
-</div>
-
-<div class="menu">
-
-<a href="#story">Story</a>
-
-<a href="#philosophy">Philosophy</a>
-
-<a href="#land">The Land</a>
-
-<a href="#contact">Contact</a>
-
-</div>
-
-</nav>
-
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="brand">NOUALLA <span class="dot">●</span></div>
+    <nav class="links">
+      <a href="#story">Story</a>
+      <a href="#experience">Experience</a>
+      <a href="#green">Green</a>
+      <a href="#community">Community</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-
-<div class="overlay"></div>
-
-<div class="hero-content">
-
-<p class="eyebrow">
-
-Northern Morocco
-
-</p>
-
-<h1>
-
-Reviving the soul of rural Morocco.
-
-</h1>
-
-<p class="intro">
-
-A regenerative destination where architecture, agriculture and hospitality reconnect people with the land.
-
-</p>
-
-<a href="#story" class="button">
-
-Discover Noualla
-
-</a>
-
-</div>
-
+  <div class="hero-bg"><img src="images/valley-2026.jpg" alt="View across the Rif foothills toward the Mediterranean, with restored land in the foreground"></div>
+  <div class="contours" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="#f3ecd9" stroke-width="1">
+        <path opacity="0.14" d="M-50,640 C 200,590 350,680 600,620 C 850,570 1000,660 1250,600"/>
+        <path opacity="0.11" d="M-50,690 C 220,640 380,730 620,680 C 860,630 1020,710 1250,660"/>
+        <path opacity="0.09" d="M-50,740 C 260,700 420,760 660,730 C 880,690 1040,760 1250,730"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow reveal">RIF REGION · NORTHERN MOROCCO</div>
+    <h1 class="reveal">A degraded hillside <em>becoming</em> a living ecosystem.</h1>
+    <p class="sub reveal">Noualla is a regenerative rural retreat in the Rif foothills of northern Morocco, transforming a once-degraded hillside into a living landscape while building a small-scale hospitality model rooted in nature, local knowledge, and Moroccan rural heritage.</p>
+    <p class="statement reveal">"Travel should leave both the traveler and the place better than before."</p>
+    <div class="hero-actions reveal">
+      <a href="#story" class="btn primary">Discover our story</a>
+      <a href="#experience" class="btn ghost">Explore the experience</a>
+    </div>
+    <div class="stat-strip reveal">
+      <div class="stat"><div class="num">9,300 m²</div><div class="label">Land under regeneration</div></div>
+      <div class="stat"><div class="num">600+</div><div class="label">Trees planted since 2022</div></div>
+      <div class="stat"><div class="num">4 yrs</div><div class="label">Continuous ecological work</div></div>
+      <div class="stat"><div class="num">1 → 10</div><div class="label">Local jobs, current to full operation</div></div>
+    </div>
+  </div>
 </section>
 
-<section id="story" class="section">
-
-<div class="container">
-
-<p class="section-title">
-
-OUR STORY
-
-</p>
-
-<h2>
-
-A forgotten hillside.<br>
-
-A new future.
-
-</h2>
-
-<p>
-
-Noualla begins with a simple belief:
-
-the future of tourism lies in restoring places rather than consuming them.
-
-On a quiet hillside overlooking the Rif Mountains, we are transforming a piece of land into a living example of regenerative hospitality rooted in Moroccan culture.
-
-Every tree planted, every terrace restored and every wall built carries the same purpose:
-
-to leave the land healthier than we found it.
-
-</p>
-
-</div>
-
+<!-- TRANSFORMATION -->
+<section class="transform" id="story">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Before Hospitality, There Was Regeneration</div>
+      <h2>From degraded hillside to living landscape.</h2>
+    </div>
+    <div class="tf-grid">
+      <div class="tf-text reveal">
+        <p>In 2022, a severely degraded hillside near a rural village in northern Morocco was acquired with one purpose: to prove that damaged land could come back to life. The land had suffered years of overgrazing, erosion, and declining biodiversity.</p>
+        <p>The first goal was not to build accommodation. It was <strong>to restore a relationship with the land</strong>. Through patience, observation, permaculture principles, and continuous care, the hillside has gradually transformed into a diverse living ecosystem.</p>
+        <p>Today, one permanent worker maintains the land and its systems day to day, with additional help brought in during planting seasons and larger projects.</p>
+        <div class="impact-grid">
+          <div class="impact"><div class="n">9,300 m²</div><div class="l">Land under regeneration</div></div>
+          <div class="impact"><div class="n">600+</div><div class="l">Trees planted since 2022</div></div>
+          <div class="impact"><div class="n">4 years</div><div class="l">Continuous ecological work</div></div>
+          <div class="impact"><div class="n">1 → 10</div><div class="l">Local employment, now to full operation</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="compare-photos">
+          <div class="ph"><span class="tag">2022</span><img src="images/swale-2022.jpg" alt="Bare, freshly-dug hillside soil during early restoration work in 2022"></div>
+          <div class="ph"><span class="tag">Today</span><img src="images/meadow.jpg" alt="Wildflower meadow with young olive trees on the same hillside today"></div>
+        </div>
+        <div class="ph support-photo"><img src="images/planting-2022.jpg" alt="Planting one of the first olive trees on the bare hillside, 2022"></div>
+        <p class="cap">2022: overgrazed, eroding, and low in biodiversity. Today: 600+ trees established, native vegetation and pollinators returning, permaculture systems in place.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="philosophy" class="section beige">
+<!-- WHY + EXPERIENCE -->
+<section class="why" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Noualla Exists</div>
+      <h2>Hospitality grew from the land.</h2>
+    </div>
+    <p class="why-lede reveal">Noualla was not created to build another hotel. The hospitality concept emerged from watching the land regenerate, and wanting to share that experience with others — a place where people can slow down, reconnect with nature, discover local traditions, and experience a different way of travelling.</p>
 
-<div class="container">
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-photo trio">
+          <div class="ph"><img src="images/vegetable-terraces.jpg" alt="Terraced vegetable gardens on the hillside"></div>
+          <div class="ph"><img src="images/garden-path.jpg" alt="A dirt path through rows of leeks and young fruit trees at dusk"></div>
+          <div class="ph"><img src="images/herb-bed.jpg" alt="A bed of rosemary, sage, and bay laurel"></div>
+        </div>
+        <div class="exp-copy">
+          <h3>The Living Farm</h3>
+          <p>Walk through a regenerating landscape and discover fruit trees, medicinal plants, native species, insects and pollinators, and ecological farming practices in daily use.</p>
+        </div>
+      </div>
 
-<p class="section-title">
+      <div class="exp-item flip reveal">
+        <div class="exp-photo"><div class="ph"><img src="images/valley-2021.jpg" alt="View across the valley toward the Mediterranean coast and the Rif mountains"></div></div>
+        <div class="exp-copy">
+          <h3>Nature &amp; Exploration</h3>
+          <p>Discover the surrounding region through mountain walks, river landscapes, nearby waterfalls, the Mediterranean coastline, and rural villages.</p>
+        </div>
+      </div>
 
-FIVE PILLARS
+      <div class="exp-item no-photo reveal">
+        <div class="exp-copy">
+          <h3>Traditional Craftsmanship</h3>
+          <p>Meet local artisans and discover generations of knowledge. Guests will have the opportunity to visit traditional pottery makers, learn from local women artisans, create their own pieces, and support handmade craftsmanship. More on this partnership below, under Community.</p>
+        </div>
+      </div>
 
-</p>
-
-<div class="pillars">
-
-<div>
-
-<h3>Regeneration</h3>
-
-<p>Restoring ecosystems through permaculture and responsible land stewardship.</p>
-
-</div>
-
-<div>
-
-<h3>Hospitality</h3>
-
-<p>Small-scale experiences designed around authenticity rather than mass tourism.</p>
-
-</div>
-
-<div>
-
-<h3>Craftsmanship</h3>
-
-<p>Celebrating Moroccan artisans and traditional building techniques.</p>
-
-</div>
-
-<div>
-
-<h3>Nature</h3>
-
-<p>Living among orchards, gardens, wildlife and mountain landscapes.</p>
-
-</div>
-
-<div>
-
-<h3>Community</h3>
-
-<p>Creating opportunities that benefit neighbouring families and local culture.</p>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="exp-item reveal">
+        <div class="exp-photo"><div class="ph"><img src="images/interior-nook.jpg" alt="A quiet window nook with tea and a view over the hills"></div></div>
+        <div class="exp-copy">
+          <h3>Slow Moments</h3>
+          <p>Sometimes the most meaningful experiences are simple: sitting on a private terrace, listening to the wind, watching birds and animals, observing village life from a distance, and enjoying the changing light over the mountains.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="land" class="section">
-
-<div class="container narrow">
-
-<p class="section-title">
-
-THE LAND
-
-</p>
-
-<h2>
-
-Where mountains meet the Mediterranean.
-
-</h2>
-
-<p>
-
-Located in northern Morocco, Noualla sits between Tetouan, Chefchaouen and the Mediterranean coast.
-
-The project combines regenerative agriculture, traditional architecture and slow travel to create a place that feels deeply rooted in its landscape.
-
-</p>
-
-</div>
-
+<!-- SMALL BY CHOICE -->
+<section class="small">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">A Small-Scale Model</div>
+      <h2>Small by choice, never a resort.</h2>
+      <p class="lede">Noualla is intentionally limited to protect the character of the land and preserve the quality of the experience. Fewer guests means more privacy, deeper experiences, lighter environmental impact, and stronger relationships with the surrounding community.</p>
+    </div>
+    <div class="phase-cards reveal">
+      <div class="phase-card">
+        <div class="tag2">Phase 1</div>
+        <div class="units">4 <span>bungalows</span></div>
+        <p>Nature-integrated units — a first step designed to prove the model while maintaining the site's balance.</p>
+      </div>
+      <div class="phase-card">
+        <div class="tag2">Long term</div>
+        <div class="units">8 <span>units max</span></div>
+        <p>A deliberate limit, chosen for experience quality and the land's wellbeing rather than the site's technical capacity.</p>
+      </div>
+    </div>
+    <div class="build-photos reveal">
+      <div class="ph"><img src="images/building-construction.jpg" alt="The first bungalow under construction on the hillside"></div>
+      <div class="ph"><img src="images/house-sunset.jpg" alt="The same building at dusk, surrounded by papaya and banana plants"></div>
+    </div>
+    <p class="cap reveal">Under construction, and at dusk — built with natural, locally sourced materials wherever technically possible.</p>
+  </div>
 </section>
 
-<section class="section dark">
+<!-- GREEN + COMMUNITY PILLARS -->
+<section class="pillars" id="green">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Two Commitments This Challenge Asks Us to Prove</div>
+      <h2>Working with nature, and with the people already here.</h2>
+      <p class="lede">Below is where Noualla stands today on regeneration and on community partnership — what's already true on the ground, and what's honestly still ahead.</p>
+    </div>
 
-<div class="container">
+    <!-- GREEN -->
+    <div class="pillar reveal">
+      <div class="pillar-top">
+        <div>
+          <div class="numlabel">GREEN PROJECTS</div>
+          <h3>Regenerating the Land</h3>
+          <div class="tagline">Working with nature, not against it</div>
+        </div>
+        <div class="pillar-body">
+          <p>The foundation of Noualla is ecological regeneration. The land is being developed using permaculture principles and traditional knowledge adapted to the local environment.</p>
+          <div class="status-split">
+            <div class="status-col now">
+              <div class="stag">Already underway</div>
+              <ul>
+                <li>600+ trees planted, incl. Mediterranean and fruit orchards</li>
+                <li>Native biodiversity and pollinators returning</li>
+                <li>Permaculture systems developed</li>
+                <li>Swales and terraces improving water retention</li>
+                <li>Greywater management systems in use</li>
+              </ul>
+            </div>
+            <div class="status-col next">
+              <div class="stag">Planned next</div>
+              <ul>
+                <li>Solar energy systems</li>
+                <li>Natural, locally sourced construction methods</li>
+                <li>Continued biodiversity improvement</li>
+                <li>Wider landscape restoration partnerships</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-photos">
+        <div class="ph"><img src="images/nursery.jpg" alt="Young cuttings and seedlings ready for planting"></div>
+        <div class="ph"><img src="images/worker-lavender.jpg" alt="A worker tending lavender on the hillside"></div>
+        <div class="ph"><img src="images/lavender-macro.jpg" alt="Close-up of lavender in bloom"></div>
+      </div>
+    </div>
 
-<p class="section-title light">
-
-CURRENT STATUS
-
-</p>
-
-<h2>
-
-Currently in development.
-
-</h2>
-
-<p>
-
-Noualla is being carefully developed over the coming years.
-
-Rather than building quickly, we are restoring the land step by step with patience, craftsmanship and respect for nature.
-
-Follow our journey as every season brings new trees, new gardens and new spaces to life.
-
-</p>
-
-<a class="button light-button" href="https://instagram.com/maisonnoualla" target="_blank">
-
-Follow on Instagram
-
-</a>
-
-</div>
-
+    <!-- COMMUNITY -->
+    <div class="pillar reveal" id="community">
+      <div class="pillar-top">
+        <div>
+          <div class="numlabel">COMMUNITY-BASED TOURISM</div>
+          <h3>People &amp; Community</h3>
+          <div class="tagline">Partners, not attractions</div>
+        </div>
+        <div class="pillar-body">
+          <p>Rural communities hold knowledge, skills, and traditions that deserve respect and recognition. Noualla is built around existing local strengths rather than creating artificial experiences.</p>
+          <div class="status-split">
+            <div class="status-col now">
+              <div class="stag">Already established</div>
+              <ul>
+                <li>One permanent local worker, with more brought in as needed</li>
+                <li>Relationships with neighbouring families</li>
+                <li>Registered Moroccan business</li>
+                <li>Connections with traditional pottery artisans</li>
+              </ul>
+            </div>
+            <div class="status-col next">
+              <div class="stag">Planned next</div>
+              <ul>
+                <li>Women-led pottery workshops</li>
+                <li>Women-led culinary experiences</li>
+                <li>Local sourcing: produce, handmade goods, materials</li>
+                <li>Training in hospitality, ecology &amp; land management</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top:20px; font-size:0.9rem;">This is also where Noualla's inclusivity commitment lives: alongside women-led income opportunities, we're planning youth training in hospitality and ecological practice, community educational activities, and accessible pathways and adapted design as construction moves forward — honestly, still ahead of us more than behind.</p>
+        </div>
+      </div>
+      <div class="pillar-photo-single"><div class="ph"><img src="images/pottery-nouala.jpg" alt="Two local women shaping pottery together inside a traditional reed-and-wood nouala"></div></div>
+      <p class="cap" style="color:#cfc9ae;">Learning the wheel inside a traditional nouala with artisans from a nearby pottery village.</p>
+    </div>
+  </div>
 </section>
 
-<footer id="contact">
+<!-- THE NAME -->
+<section class="name">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Name Noualla</div>
+      <h2>A name rooted in Moroccan heritage.</h2>
+    </div>
+    <div class="name-grid">
+      <div class="name-text reveal">
+        <p>Noualla takes its name from the traditional rural Moroccan dwelling built from natural materials — reeds, earth, wood — simple in form, but rich in meaning.</p>
+        <p>For generations, these homes sheltered families, stories, and everyday life. Built from what the land provided, they represented a way of living connected to nature, climate, and community.</p>
+        <p><strong>Noualla carries that philosophy forward:</strong> simplicity, connection, and respect for the land.</p>
+      </div>
+      <div class="name-photo reveal">
+        <div class="ph"><img src="images/reed-roof-building.jpg" alt="Local craftsmen hand-weaving a traditional cane and reed roof on the hillside"></div>
+        <p class="cap">The same weaving technique the name comes from, still practiced by hand today.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="container footer">
+<!-- LOCATION / SITE TODAY -->
+<section class="land" id="location">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Location &amp; The Site Today</div>
+      <h2>Between mountains, rivers, and the Mediterranean.</h2>
+      <p class="lede">Located in the Rif region of northern Morocco, Noualla sits between natural landscapes, traditional villages, and some of Morocco's most remarkable destinations.</p>
+    </div>
+    <div class="land-grid">
+      <div class="reveal">
+        <h4 style="font-weight:500; margin-bottom:14px;">Distances</h4>
+        <ul class="distances">
+          <li><span>Tétouan</span><span class="km">≈ 35 km</span></li>
+          <li><span>Chefchaouen</span><span class="km">≈ 50 km</span></li>
+          <li><span>Akchour</span><span class="km">≈ 35 km</span></li>
+          <li><span>Tangier</span><span class="km">≈ 103 km</span></li>
+          <li><span>Nearest village</span><span class="km">≈ 400 m</span></li>
+        </ul>
+        <h4 style="font-weight:500; margin:28px 0 4px;">The site today</h4>
+        <ul class="infra-list">
+          <li><span class="ck">✓</span> Privately owned, titled land</li>
+          <li><span class="ck">✓</span> Authorized private well</li>
+          <li><span class="ck">✓</span> Access road to the property</li>
+          <li><span class="ck">✓</span> Existing small house</li>
+          <li><span class="ck">✓</span> Internet available, electricity nearby</li>
+          <li><span class="ck">→</span> Tourism operating permits &amp; Phase 1 construction underway</li>
+        </ul>
+      </div>
+      <div class="reveal site-photo">
+        <div class="ph"><img src="images/dogs-terrace.jpg" alt="View down the stone steps to the terraced garden, with the farm dogs resting"></div>
+        <p class="cap">The terrace today — home to the land's three dogs as much as anyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Journey Ahead</div>
+      <h2>Growing patiently.</h2>
+    </div>
+    <div class="reveal">
+      <div class="tl-row">
+        <div class="when">2022–2026</div>
+        <div><h4>Land regeneration</h4><p>Land acquired, 600+ trees planted, permaculture systems established, community relationships developed.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="when">Next</div>
+        <div><h4>First guest experience</h4><p>Tourism permits, construction of four bungalows, development of local partnerships, and creation of regenerative experiences. We're not attaching a fixed opening date, since permitting timelines sit outside the project's control.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="when">Future vision</div>
+        <div><h4>A living example of rural Moroccan hospitality</h4><p>Where landscapes are restored, traditions are valued, communities benefit, and visitors leave changed.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Noualla
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Founder Story</div>
+      <h2>A personal journey that became a shared vision.</h2>
+    </div>
+    <div class="founder-grid">
+      <div class="founder-text reveal">
+        <p>Noualla began as a personal commitment to restore a piece of damaged land. The founder's journey was shaped by years of travelling through developing countries, learning from rural communities, indigenous cultures, and regenerative projects around the world.</p>
+        <p>Experiences in places such as Panama, Belize, Zanzibar, and Morocco revealed both the beauty of community-based living and the challenges created by unsustainable tourism. Noualla brings those lessons together: a place where visitors are welcomed not only as guests, but as participants in a more conscious way of travelling.</p>
+        <div class="founder-tag">
+          <span>Permaculture trained</span>
+          <span>4 years hands-on restoration</span>
+          <span>Cross-cultural community work</span>
+          <span>Founder-funded to date</span>
+        </div>
+      </div>
+      <div class="founder-photo reveal">
+        <div class="ph"><img src="images/sunflower-seeds.jpg" alt="Holding a packet of heirloom sunflower seeds in the garden, with the house behind"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</h2>
+<!-- CLOSING -->
+<section class="closing" id="contact">
+  <div class="closing-bg"><img src="images/rainbow.jpg" alt="A rainbow over the restored hillside after rain"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal">More Than a Stay</div>
+    <h2 class="reveal">A hillside becomes a forest. Traditions remain alive. Travel becomes a way to reconnect.</h2>
+    <div class="closing-lines reveal">
+      <p>With nature.</p>
+      <p>With people.</p>
+      <p>With ourselves.</p>
+    </div>
+    <div class="cta-row reveal">
+      <a href="mailto:info@noualla.com" class="btn primary">info@noualla.com</a>
+      <a href="https://instagram.com/noualla" class="btn ghost" target="_blank" rel="noopener">Follow the regeneration →</a>
+    </div>
+  </div>
+</section>
 
-<p>
-
-Reviving the soul of rural Morocco.
-
-</p>
-
-<p>
-
-Instagram
-
-<a href="https://instagram.com/maisonnoualla" target="_blank">
-
-@maisonnoualla
-
-</a>
-
-</p>
-
-<p>
-
-info@noualla.com
-
-</p>
-
-</div>
-
+<footer>
+  <div class="wrap">
+    <div class="fbrand">NOUALLA</div>
+    <div class="fline">Rif Region · Northern Morocco</div>
+  </div>
 </footer>
 
-</body>
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 
+</body>
 </html>
