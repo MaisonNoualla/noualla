@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 270">
+  <line x1="22" y1="150" x2="178" y2="150" stroke="#5a5147" stroke-width="1.6" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30,150 Q100,38 170,150" fill="none" stroke="#666b47" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+  <path d="M44,150 Q100,54 156,150" fill="none" stroke="#666b47" stroke-width="2.6" opacity="0.55" stroke-linecap="round"/>
+  <path d="M60,150 Q100,72 140,150" fill="none" stroke="#2a231d" stroke-width="6" stroke-linecap="round"/>
+  <g stroke="#2a231d" stroke-width="3.2" stroke-linecap="round">
+    <line x1="75" y1="126" x2="85" y2="116"/>
+    <line x1="87" y1="118" x2="97" y2="108"/>
+    <line x1="103" y1="108" x2="113" y2="118"/>
+    <line x1="115" y1="116" x2="125" y2="126"/>
+  </g>
+  <g fill="none" stroke="#a1512c" stroke-width="3.6" stroke-linecap="round">
+    <path d="M152,150 C150,132 156,120 150,104"/>
+    <path d="M150,120 C158,114 163,116 168,108"/>
+    <path d="M150,134 C142,129 137,131 131,124"/>
+  </g>
+  <text x="100" y="205" font-family="Georgia, 'Times New Roman', 'Noto Serif', serif" font-size="34" letter-spacing="4" fill="#2a231d" text-anchor="middle">NOUALLA</text>
+  <line x1="55" y1="222" x2="145" y2="222" stroke="#a1512c" stroke-width="2" opacity="0.8"/>
+</svg>
