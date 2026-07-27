@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <g fill="none" stroke="#5B5F3B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Finial -->
     <line x1="100" y1="30" x2="100" y2="42"/>
-    <!-- Domed nouala silhouette -->
     <path d="M55,172 L58,122 C58,78 78,42 100,42 C122,42 142,78 142,122 L145,172"/>
-    <!-- Doorway arch -->
     <path d="M88,172 L88,142 C88,128 92,120 100,120 C108,120 112,128 112,142 L112,172"/>
   </g>
 </svg>

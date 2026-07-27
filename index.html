@@ -106,7 +106,7 @@
   .hero-content .eyebrow{ color: var(--cream); margin-bottom:22px; }
   .hero-content .eyebrow::before{ background: var(--cream); }
   .hero h1{
-    color: var(--cream); font-size: clamp(38px, 5.4vw, 66px);
+    color: var(--cream); font-size: clamp(46px, 6.5vw, 80px);
     max-width: 15ch; margin-bottom: 20px;
     font-weight: 500;
   }
@@ -115,16 +115,16 @@
     margin-bottom: 34px; font-weight:300;
   }
 
-  section{ padding: 110px 0; }
-  .section-head{ max-width: 640px; margin-bottom: 56px; }
-  .section-head h2{ font-size: clamp(28px, 3.4vw, 42px); margin-top:16px; }
-  .section-head p.intro{ margin-top: 18px; font-size: 17px; color: var(--ink-soft); max-width: 58ch; }
+  section{ padding: 145px 0; }
+  .section-head{ max-width: 640px; margin-bottom: 74px; }
+  .section-head h2{ font-size: clamp(31px, 3.8vw, 47px); margin-top:20px; }
+  .section-head p.intro{ margin-top: 18px; font-size: 15.5px; color: var(--ink-soft); max-width: 58ch; }
 
   /* LAND — 3 blocks */
-  .land-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+  .land-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
   .land-card figure{ aspect-ratio: 4/5; border-radius: 3px; overflow:hidden; background: var(--stone); }
-  .land-card h3{ font-size: 20px; margin-top: 20px; font-weight:500; }
-  .land-card p{ margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); }
+  .land-card h3{ font-size: 20px; margin-top: 26px; font-weight:500; }
+  .land-card p{ margin-top: 8px; font-size: 13.5px; color: var(--ink-soft); }
 
   /* placeholder image block */
   .ph{
@@ -152,17 +152,29 @@
     font-size: 10.5px; letter-spacing:.06em; text-transform:uppercase;
     padding: 6px 10px; border-radius: 2px; font-weight:500;
   }
-  .stay-text h2{ font-size: clamp(28px,3.4vw,40px); }
-  .stay-text p.sub{ color: var(--clay-deep); font-size:16px; margin: 14px 0 20px; font-style:italic; font-family:'Fraunces',serif; }
-  .stay-text p.body{ color: var(--ink-soft); font-size:16px; max-width: 46ch; }
+  .stay-text h2{ font-size: clamp(31px,3.8vw,44px); }
+  .stay-text p.sub{ color: var(--clay-deep); font-size:16px; margin: 16px 0 22px; font-style:italic; font-family:'Fraunces',serif; }
+  .stay-text p.body{ color: var(--ink-soft); font-size:14.5px; max-width: 46ch; }
 
-  /* EXPERIENCES */
-  .exp-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
-  .exp-card{ display:flex; flex-direction:column; }
-  .exp-card figure{ aspect-ratio: 3/4; border-radius: 3px; overflow:hidden; background: var(--stone); }
-  .exp-card h3{ font-size: 15.5px; margin-top:16px; font-weight:500; line-height:1.25; }
-  .exp-card p{ font-size: 13px; color: var(--ink-soft); margin-top:6px; }
-  @media (max-width: 980px){ .exp-grid{ grid-template-columns: repeat(2,1fr);} }
+  /* EXPERIENCES — editorial rows, not equal-weight cards */
+  .exp-editorial{ display:flex; flex-direction:column; gap: 96px; }
+  .exp-fig-lg{ aspect-ratio: 16/9; border-radius:4px; overflow:hidden; background:var(--stone); }
+  .exp-row-text{ margin-top:28px; max-width:640px; }
+  .exp-row-text h3{ font-family:'Fraunces',serif; font-size:25px; font-weight:500; color:var(--olive-deep); }
+  .exp-row-text p{ font-size:14.5px; color:var(--ink-soft); margin-top:8px; }
+
+  .exp-duo-figs{ display:grid; grid-template-columns: 1.3fr 1fr; gap:20px; }
+  .exp-duo-figs figure{ aspect-ratio: 4/3; border-radius:4px; overflow:hidden; background:var(--stone); }
+
+  .exp-row-pair{ display:grid; grid-template-columns: 1fr 1fr; gap:44px; }
+  .exp-pair-item figure{ aspect-ratio: 4/3; border-radius:4px; overflow:hidden; background:var(--stone); }
+  .exp-pair-item h3{ font-family:'Fraunces',serif; font-size:20px; margin-top:24px; font-weight:500; color:var(--olive-deep); }
+  .exp-pair-item p{ font-size:13.5px; color:var(--ink-soft); margin-top:6px; }
+
+  @media (max-width: 900px){
+    .exp-duo-figs{ grid-template-columns: 1fr; }
+    .exp-row-pair{ grid-template-columns: 1fr; gap:56px; }
+  }
 
   /* TABLE section */
   .table-section{ position:relative; }
@@ -172,8 +184,8 @@
     background: rgba(20,18,12,.62); color:var(--cream);
     padding:8px 14px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; border-radius:2px;
   }
-  .table-below{ display:grid; grid-template-columns: 1.4fr 1fr; gap:40px; margin-top: 40px; align-items:end;}
-  .table-below .text p{ font-size:17px; color:var(--ink-soft); max-width:50ch; }
+  .table-below{ display:grid; grid-template-columns: 1.4fr 1fr; gap:32px; margin-top: 20px; align-items:end;}
+  .table-below .text p{ font-size:15px; color:var(--ink-soft); max-width:50ch; }
   .table-below figure{ aspect-ratio: 4/5; border-radius:3px; overflow:hidden; background:var(--stone); position:relative;}
 
   /* TRADITION */
@@ -182,12 +194,14 @@
   .tradition .eyebrow::before{ background:var(--gold); }
   .tradition h2{ color: var(--cream); }
   .trad-grid{ display:grid; grid-template-columns: 1fr 1.1fr; gap:56px; align-items:center; }
-  .trad-grid figure{ aspect-ratio: 4/3; border-radius:3px; overflow:hidden; }
-  .trad-text p{ font-size:17px; color: rgba(247,241,225,.82); max-width:48ch; margin-top:18px;}
+  .trad-figs{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  .trad-figs figure{ aspect-ratio: 3/4; border-radius:3px; overflow:hidden; }
+  .trad-text p{ font-size:15px; color: rgba(247,241,225,.82); max-width:48ch; margin-top:18px;}
+  @media (max-width: 900px){ .trad-figs{ grid-template-columns: 1fr 1fr; } }
 
   /* MILESTONES */
   .milestones{ }
-  .mile-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 20px;}
+  .mile-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 70px; margin-top: 26px;}
   .mile-col h4{
     font-family:'Work Sans', sans-serif; font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
     color: var(--ink-soft); font-weight:600; margin-bottom:18px; padding-bottom:10px;
@@ -200,7 +214,7 @@
   }
   .mile-col.done .mark{ background: var(--olive); color: var(--cream); }
   .mile-col.planned .mark{ background:transparent; border: 1.5px solid var(--clay-deep); color: var(--clay-deep); }
-  .cta-final{ text-align:center; margin-top: 90px; }
+  .cta-final{ text-align:center; margin-top: 112px; }
   .cta-final h2{ font-size: clamp(30px,4vw,46px); }
   .cta-final .btns{ display:flex; gap:16px; justify-content:center; margin-top:30px; }
   .btn.solid-clay{ background: var(--clay); border-color:var(--clay); color:var(--cream); }
@@ -214,13 +228,12 @@
     .land-grid{ grid-template-columns: 1fr; }
     .stay-grid{ grid-template-columns: 1fr; }
     .stay-figs{ order:-1; }
-    .exp-grid{ grid-template-columns: 1fr 1fr; }
     .table-below{ grid-template-columns: 1fr; }
     .trad-grid{ grid-template-columns: 1fr; }
     .mile-grid{ grid-template-columns: 1fr; gap:30px; }
     nav.links{ display:none; }
     .wrap, .nav-inner{ padding: 0 22px; }
-    section{ padding: 70px 0; }
+    section{ padding: 90px 0; }
   }
 </style>
 </head>
@@ -228,7 +241,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="logo"><img src="logo/noualla-icon.svg" alt="Noualla" style="height:30px; width:auto; vertical-align:middle; margin-right:11px; position:relative; top:-1px;">Noualla</div>
+    <div class="logo"><img src="logo/noualla-lockup-horizontal.svg" alt="Noualla" style="height:34px; width:auto; vertical-align:middle; display:block;"></div>
     <nav class="links">
       <a href="#land">The Land</a>
       <a href="#stay">Stay</a>
@@ -244,7 +257,7 @@
   <img src="images/hero.png" alt="Noualla at golden hour, hills of Northern Morocco">
   <div class="hero-content">
     <div class="eyebrow">Noualla — Northern Morocco</div>
-    <h1>A regenerative retreat taking shape in the hills of Northern Morocco</h1>
+    <h1>A hidden retreat rooted in the hills of Northern Morocco</h1>
     <p class="sub">Olive terraces, restored soil, and Moroccan hospitality — grown slowly, on land that's coming back to life.</p>
     <div><a href="#land" class="btn outline">Discover Noualla</a></div>
   </div>
@@ -268,7 +281,7 @@
         <p>Rebuilding soil through terraces, organic practice, and traditional knowledge.</p>
       </div>
       <div class="land-card">
-        <figure><img src="images/land-ecosystem.jpg" alt="Bees pollinating a sunflower on the land"></figure>
+        <figure><img src="images/land-ecosystem.jpg" alt="Wild lavender growing on the land"></figure>
         <h3>A living ecosystem</h3>
         <p>A landscape where plants, pollinators, and wildlife are returning.</p>
       </div>
@@ -289,8 +302,8 @@
   <div class="wrap">
     <div class="stay-grid">
       <div class="stay-figs">
-        <figure><img src="images/stay-exterior.png" alt="Future accommodation concept — bungalow exterior"><span class="fig-tag">Concept</span></figure>
-        <figure><img src="images/stay-interior.png" alt="Interior concept — bungalow bedroom"><span class="fig-tag">Concept</span></figure>
+        <figure><img src="images/stay-exterior.png" alt="Future accommodation concept — bungalow exterior"><span class="fig-tag">Future accommodation concept</span></figure>
+        <figure><img src="images/stay-interior.png" alt="Interior concept — bungalow bedroom"><span class="fig-tag">Concept design</span></figure>
       </div>
       <div class="stay-text">
         <div class="eyebrow">Vision</div>
@@ -314,32 +327,54 @@
       <h2>More than a stay</h2>
       <p class="intro">A way to reconnect with land, culture, and tradition.</p>
     </div>
-    <div class="exp-grid">
-      <div class="exp-card">
-        <figure style="position:relative;"><img src="images/exp-culinary.png" alt="Women-led culinary experience, preparing a shared meal"><span class="fig-tag" style="position:absolute; bottom:10px; left:10px;">Concept</span></figure>
-        <h3>Women-led culinary experiences</h3>
-        <p>Traditional recipes, garden ingredients, local knowledge.</p>
+    <div class="exp-editorial">
+
+      <div class="exp-row-single">
+        <figure class="exp-fig-lg" style="position:relative;">
+          <img src="images/exp-culinary.png" alt="Women-led culinary experience, preparing a shared meal">
+          <span class="fig-tag" style="position:absolute; bottom:14px; left:14px;">Concept</span>
+        </figure>
+        <div class="exp-row-text">
+          <h3>Women-led culinary experiences</h3>
+          <p>Traditional recipes, garden ingredients, local knowledge.</p>
+        </div>
       </div>
-      <div class="exp-card">
-        <figure><img src="images/exp-pottery.jpg" alt="Women-led pottery workshop, hand-thrown ceramics"></figure>
-        <h3>Women-led pottery workshops</h3>
-        <p>Moroccan craftsmanship through handmade ceramics.</p>
+
+      <div class="exp-row-single">
+        <div class="exp-duo-figs">
+          <figure><img src="images/exp-pottery.jpg" alt="Hands shaping clay — the pottery process"></figure>
+          <figure><img src="images/exp-pottery-result.jpg" alt="Finished handmade ceramics"></figure>
+        </div>
+        <div class="exp-row-text">
+          <h3>Women-led pottery workshops</h3>
+          <p>Moroccan craftsmanship through handmade ceramics.</p>
+        </div>
       </div>
-      <div class="exp-card">
-        <figure><img src="images/exp-farmwalks.jpg" alt="Path through the garden terraces"></figure>
-        <h3>Farm walks</h3>
-        <p>Plants, farming practices, and the living landscape.</p>
+
+      <div class="exp-row-pair">
+        <div class="exp-pair-item">
+          <figure><img src="images/exp-farmwalks.jpg" alt="Path through the garden terraces"></figure>
+          <h3>Farm walks</h3>
+          <p>Plants, farming practices, and the living landscape.</p>
+        </div>
+        <div class="exp-pair-item">
+          <figure><img src="images/exp-harvest.jpg" alt="Basket of seasonal harvest fruit"></figure>
+          <h3>Seasonal harvests</h3>
+          <p>Participate in the rhythms of the land.</p>
+        </div>
       </div>
-      <div class="exp-card">
-        <figure><img src="images/exp-harvest.jpg" alt="Basket of seasonal harvest fruit"></figure>
-        <h3>Seasonal harvests</h3>
-        <p>Participate in the rhythms of the land.</p>
+
+      <div class="exp-row-single">
+        <figure class="exp-fig-lg" style="position:relative;">
+          <img src="images/exp-astronomy.png" alt="Guests stargazing under the Milky Way">
+          <span class="fig-tag" style="position:absolute; bottom:14px; left:14px;">Concept</span>
+        </figure>
+        <div class="exp-row-text">
+          <h3>Nature & astronomy nights</h3>
+          <p>Clear skies, silence, and natural beauty after sunset.</p>
+        </div>
       </div>
-      <div class="exp-card">
-        <figure style="position:relative;"><img src="images/exp-astronomy.png" alt="Guests stargazing under the Milky Way"><span class="fig-tag" style="position:absolute; bottom:10px; left:10px;">Concept</span></figure>
-        <h3>Nature & astronomy nights</h3>
-        <p>Clear skies, silence, and natural beauty after sunset.</p>
-      </div>
+
     </div>
   </div>
 </section>
@@ -373,7 +408,10 @@
 <section class="tradition">
   <div class="wrap">
     <div class="trad-grid">
-      <figure><img src="images/tradition-pottery.jpg" alt="Pottery close-up, hands shaping clay"></figure>
+      <div class="trad-figs">
+        <figure><img src="images/tradition-pottery.jpg" alt="Hands shaping clay, close-up"></figure>
+        <figure><img src="images/tradition-pottery-result.jpg" alt="A finished handmade bowl, still on the wheel"></figure>
+      </div>
       <div class="trad-text">
         <div class="eyebrow">Community</div>
         <h2>Rooted in Moroccan traditions</h2>
@@ -396,16 +434,17 @@
     </div>
     <div class="mile-grid">
       <div class="mile-col done">
-        <h4>Completed</h4>
+        <h4>The journey so far</h4>
         <div class="mile-item"><span class="mark">✓</span> Regenerative gardens established</div>
         <div class="mile-item"><span class="mark">✓</span> Water conservation systems underway</div>
-        <div class="mile-item"><span class="mark">✓</span> Mediterranean and native trees planted</div>
+        <div class="mile-item"><span class="mark">✓</span> Mediterranean landscape restored</div>
+        <div class="mile-item"><span class="mark">✓</span> Native and fruit trees planted</div>
       </div>
       <div class="mile-col planned">
-        <h4>Planned</h4>
-        <div class="mile-item"><span class="mark">○</span> Solar energy planned</div>
-        <div class="mile-item"><span class="mark">○</span> Future cabins designed</div>
-        <div class="mile-item"><span class="mark">○</span> Local experiences in development</div>
+        <h4>What comes next</h4>
+        <div class="mile-item"><span class="mark">○</span> Solar energy integration</div>
+        <div class="mile-item"><span class="mark">○</span> Future accommodation development</div>
+        <div class="mile-item"><span class="mark">○</span> Local hospitality experiences</div>
       </div>
     </div>
 
