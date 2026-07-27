@@ -3,357 +3,425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noualla — A regenerative retreat growing from the hills of Northern Morocco</title>
-<meta name="description" content="Noualla is a future regenerative retreat in the Mediterranean hills of northern Morocco, built slowly on restored agricultural land.">
+<title>Noualla — A Regenerative Retreat in Northern Morocco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="logo/noualla-icon.svg">
 <style>
   :root{
-    --ink:#1F1E1F; --ink-soft:#5a5147;
-    --paper:#ece2ce; --paper-deep:#e2d5b9;
-    --olive:#5B5F3B; --olive-dark:#3d4028;
-    --clay:#B45A37; --sage:#A6B097; --limestone:#C8C2B6;
-    --line: rgba(31,30,30,0.14); --line-strong: rgba(31,30,30,0.28);
+    --bg: #EEE3CB;
+    --bg-warm: #E7D9BC;
+    --ink: #2B2620;
+    --ink-soft: #5A5044;
+    --olive: #47552F;
+    --olive-deep: #333E22;
+    --clay: #A45A38;
+    --clay-deep: #8A4A2D;
+    --gold: #BD8A32;
+    --stone: #DCCFAE;
+    --cream: #F7F1E1;
+    --max: 1180px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-  @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}}
-  h1,h2,h3,h4{font-family:'Cormorant Garamond', serif; font-weight:400; letter-spacing:-0.02em; color:var(--ink); line-height:1;}
-  a{color:inherit; text-decoration:none;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
-  img{display:block; width:100%; height:100%; object-fit:cover;}
-  p{max-width:600px;}
-  .label{font-family:'Inter', sans-serif; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--olive-dark);}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(20px, 5vw, 64px);}
-  .ph{background:#d9cba8; overflow:hidden; position:relative;}
-  .reveal{opacity:0; transform:translateY(20px); transition:opacity 0.8s ease, transform 0.8s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--olive-deep);
+  }
+  .eyebrow{
+    font-family:'Work Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay-deep);
+    font-weight: 600;
+    display:flex;
+    align-items:center;
+    gap: 12px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 26px; height: 1px;
+    background: var(--clay-deep);
+    display:inline-block;
+  }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+  /* Terrace divider — signature motif: a stepped line echoing hillside terracing */
+  .terrace-divider{ width:100%; overflow:hidden; line-height:0; }
+  .terrace-divider svg{ width:100%; height:auto; display:block; }
 
   /* NAV */
-  header{position:fixed; top:0; left:0; right:0; z-index:50; padding:26px 0; transition: background 0.4s ease, padding 0.4s ease; border-bottom:1px solid transparent;}
-  header.scrolled{background:rgba(236,226,206,0.92); backdrop-filter:blur(6px); padding:16px 0; border-bottom:1px solid var(--line);}
-  header .wrap{display:flex; align-items:center; justify-content:space-between;}
-  .brand{font-family:'Cormorant Garamond', serif; font-size:1.5rem; letter-spacing:0.06em; display:flex; align-items:center; gap:10px;}
-  .brand svg{width:26px; height:26px; flex-shrink:0;}
-  nav.links{display:flex; gap:34px; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;}
-  nav.links a{position:relative; padding-bottom:3px; color:var(--ink-soft);}
-  nav.links a:hover{color:var(--ink);}
-  nav.links a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--clay); transition:width 0.25s ease;}
-  nav.links a:hover::after{width:100%;}
-  @media (max-width:800px){ nav.links{display:none;} }
+  header.nav{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(238,227,203,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(43,38,32,0.08);
+  }
+  .nav-inner{
+    max-width: var(--max); margin:0 auto; padding: 18px 40px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ font-family:'Fraunces', serif; font-size: 21px; letter-spacing: 0.03em; color: var(--olive-deep); font-weight:600;}
+  .logo em{ font-style: italic; font-weight:400; color: var(--clay);}
+  nav.links{ display:flex; gap: 34px; }
+  nav.links a{ color: var(--ink-soft); text-decoration:none; font-size: 13.5px; letter-spacing:.04em; text-transform:uppercase; font-weight:500;}
+  nav.links a:hover{ color: var(--clay-deep); }
+  .btn{
+    display:inline-block; padding: 13px 30px;
+    background: var(--olive); color: var(--cream);
+    font-size: 13px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+    text-decoration:none; border-radius: 2px;
+    transition: background .25s ease;
+    border: 1px solid var(--olive);
+  }
+  .btn:hover{ background: var(--olive-deep); }
+  .btn.outline{ background:transparent; color:var(--cream); border-color: rgba(247,241,225,.55); }
+  .btn.outline:hover{ background: rgba(247,241,225,.12); }
 
   /* HERO */
-  .hero{position:relative; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; overflow:hidden;}
-  .hero-bg{position:absolute; inset:0; z-index:0;}
-  .hero-bg img{width:100%; height:100%; object-fit:cover;}
-  .hero-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,17,12,0.35) 0%, rgba(20,17,12,0.28) 45%, rgba(15,13,9,0.72) 100%);}
-  .hero-inner{position:relative; z-index:2; color:#f7f1e0; max-width:760px; padding:0 24px;}
-  .hero .label{color:#d9d0b3; margin-bottom:26px;}
-  .hero h1{font-size:clamp(56px, 10vw, 96px); line-height:0.95; font-weight:400; letter-spacing:0.02em; color:#f7f1e0;}
-  .hero .sub{margin:30px auto 0; max-width:44ch; font-family:'Cormorant Garamond', serif; font-size:clamp(20px,2.6vw,28px); font-weight:400; color:#f1e9d2; line-height:1.35;}
-  .hero .small{margin:22px auto 0; max-width:52ch; font-size:16px; color:#d8d0b8; line-height:1.7;}
-  .hero-actions{margin-top:44px; display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:center;}
-  .btn{font-family:'Inter', sans-serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; padding:16px 30px; border:1px solid #f3ecd9; color:#f3ecd9; display:inline-block; transition:background 0.25s ease, color 0.25s ease;}
-  .btn.primary{background:#f3ecd9; color:var(--ink);}
-  .btn.primary:hover{background:var(--clay); border-color:var(--clay); color:#f7f1e0;}
-  .btn.ghost:hover{background:#f3ecd9; color:var(--ink);}
+  .hero{ position:relative; height: 92vh; min-height:620px; }
+  .hero img{ position:absolute; inset:0; }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(20,18,12,.15) 0%, rgba(20,18,12,.1) 40%, rgba(20,18,12,.55) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2; height:100%;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    max-width: var(--max); margin:0 auto; padding: 0 40px 76px;
+  }
+  .hero-content .eyebrow{ color: var(--cream); margin-bottom:22px; }
+  .hero-content .eyebrow::before{ background: var(--cream); }
+  .hero h1{
+    color: var(--cream); font-size: clamp(38px, 5.4vw, 66px);
+    max-width: 15ch; margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .hero p.sub{
+    color: rgba(247,241,225,.88); font-size: 18px; max-width: 46ch;
+    margin-bottom: 34px; font-weight:300;
+  }
 
-  /* SECTION GENERIC */
-  section{position:relative; padding:120px 0;}
-  .section-head{max-width:640px; margin-bottom:64px;}
-  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
-  .section-head h2{font-size:clamp(42px, 5.6vw, 64px); margin-top:16px;}
-  .section-head p.lede{margin-top:40px; color:var(--ink-soft); font-size:18px;}
-  .section-head.center p.lede{margin-left:auto; margin-right:auto;}
+  section{ padding: 110px 0; }
+  .section-head{ max-width: 640px; margin-bottom: 56px; }
+  .section-head h2{ font-size: clamp(28px, 3.4vw, 42px); margin-top:16px; }
+  .section-head p.intro{ margin-top: 18px; font-size: 17px; color: var(--ink-soft); max-width: 58ch; }
 
-  /* STORY */
-  .story{background:var(--paper);}
-  .story-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:72px; align-items:center;}
-  @media (max-width:900px){.story-grid{grid-template-columns:1fr;}}
-  .story-text p{color:var(--ink-soft); margin-bottom:24px;}
-  .story-detail{margin-top:36px;}
-  .story-photo .ph{aspect-ratio:4/5;}
-  @media (max-width:900px){.story-photo{order:-1;}}
+  /* LAND — 3 blocks */
+  .land-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+  .land-card figure{ aspect-ratio: 4/5; border-radius: 3px; overflow:hidden; background: var(--stone); }
+  .land-card h3{ font-size: 20px; margin-top: 20px; font-weight:500; }
+  .land-card p{ margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); }
 
-  /* LAND */
-  .land{background:var(--paper-deep);}
-  .land-photos{display:grid; grid-template-columns:1.6fr 1fr; gap:16px; margin-bottom:80px;}
-  @media (max-width:760px){.land-photos{grid-template-columns:1fr;}}
-  .land-photos .ph.big{aspect-ratio:16/9;}
-  .land-photos .ph.small{aspect-ratio:3/4;}
-  .land-blocks{display:grid; grid-template-columns:repeat(3,1fr); gap:56px;}
-  @media (max-width:760px){.land-blocks{grid-template-columns:1fr; gap:44px;}}
-  .land-block .num{font-family:'Cormorant Garamond', serif; font-size:15px; letter-spacing:0.1em; color:var(--clay); text-transform:uppercase; margin-bottom:14px;}
-  .land-block h3{font-size:26px; font-weight:500; letter-spacing:-0.01em; margin-bottom:12px; line-height:1.2;}
-  .land-block p{color:var(--ink-soft); font-size:16px; margin:0;}
+  /* placeholder image block */
+  .ph{
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    background:
+      repeating-linear-gradient(135deg, rgba(43,38,32,.05) 0px, rgba(43,38,32,.05) 1px, transparent 1px, transparent 14px),
+      var(--stone);
+    border: 1px dashed rgba(43,38,32,.28);
+    color: var(--ink-soft);
+    font-size: 12.5px; letter-spacing:.03em; padding: 18px;
+    font-style: italic;
+  }
+  .ph span{ display:block; font-size: 10.5px; text-transform:uppercase; letter-spacing:.14em; font-style:normal; color: var(--clay-deep); margin-bottom:6px; font-weight:600;}
 
-  /* EXPERIENCE */
-  .experience{background:var(--paper);}
-  .exp-note{font-style:italic; font-family:'Cormorant Garamond', serif; font-size:20px; color:var(--olive-dark); margin-bottom:48px;}
-  .exp-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:36px 32px;}
-  @media (max-width:920px){.exp-grid{grid-template-columns:1fr 1fr;}}
-  @media (max-width:620px){.exp-grid{grid-template-columns:1fr;}}
-  .exp-card .ph{aspect-ratio:4/5; margin-bottom:22px;}
-  .exp-card h3{font-size:24px; font-weight:500; letter-spacing:-0.01em; margin-bottom:10px; line-height:1.2;}
-  .exp-card p{color:var(--ink-soft); font-size:15.5px; margin:0;}
-  .exp-card.wide{grid-column:span 1;}
+  /* STAY section */
+  .stay-bg{ background: var(--bg-warm); }
+  .stay-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items:center; }
+  .stay-figs{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .stay-figs figure:first-child{ margin-top: 44px; }
+  .stay-figs figure{ aspect-ratio: 3/4; border-radius: 3px; overflow:hidden; background: var(--stone); position:relative;}
+  .fig-tag{
+    position:absolute; bottom:10px; left:10px; z-index:2;
+    background: rgba(20,18,12,.62); color: var(--cream);
+    font-size: 10.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding: 6px 10px; border-radius: 2px; font-weight:500;
+  }
+  .stay-text h2{ font-size: clamp(28px,3.4vw,40px); }
+  .stay-text p.sub{ color: var(--clay-deep); font-size:16px; margin: 14px 0 20px; font-style:italic; font-family:'Fraunces',serif; }
+  .stay-text p.body{ color: var(--ink-soft); font-size:16px; max-width: 46ch; }
 
-  /* CRAFT & COMMUNITY */
-  .community{background:var(--olive-dark); color:#efe9d8;}
-  .community .label{color:#c9c39f;}
-  .community .section-head h2{color:#f4efe0;}
-  .community .section-head p.lede{color:#d7d2ba;}
-  .comm-photos{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  @media (max-width:700px){.comm-photos{grid-template-columns:1fr;}}
-  .comm-photos .ph{aspect-ratio:3/4;}
-  .comm-cap{margin-top:12px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#c9c39f;}
+  /* EXPERIENCES */
+  .exp-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  .exp-card{ display:flex; flex-direction:column; }
+  .exp-card figure{ aspect-ratio: 3/4; border-radius: 3px; overflow:hidden; background: var(--stone); }
+  .exp-card h3{ font-size: 15.5px; margin-top:16px; font-weight:500; line-height:1.25; }
+  .exp-card p{ font-size: 13px; color: var(--ink-soft); margin-top:6px; }
+  @media (max-width: 980px){ .exp-grid{ grid-template-columns: repeat(2,1fr);} }
 
-  /* DEVELOPMENT */
-  .development{background:var(--paper-deep);}
-  .dev-grid{display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;}
-  @media (max-width:900px){.dev-grid{grid-template-columns:1fr;}}
-  .dev-photos{display:grid; grid-template-columns:1.4fr 1fr; gap:14px;}
-  @media (max-width:760px){.dev-photos{grid-template-columns:1fr;}}
-  .dev-photos .ph.big{aspect-ratio:3/4;}
-  .dev-photos .ph.small{aspect-ratio:1/1; align-self:end;}
-  .dev-text p{color:var(--ink-soft); margin-bottom:28px;}
-  .phase-label{font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:18px;}
-  .phase-list{list-style:none; margin-bottom:32px;}
-  .phase-list li{padding:9px 0; font-size:17px; color:var(--ink); display:flex; gap:12px; border-bottom:1px solid var(--line);}
-  .phase-list li:first-child{border-top:1px solid var(--line);}
-  .phase-list li span.ck{color:var(--olive); font-weight:600;}
-  .dev-closing{font-family:'Cormorant Garamond', serif; font-style:italic; font-size:22px; color:var(--olive-dark);}
+  /* TABLE section */
+  .table-section{ position:relative; }
+  .table-hero{ position:relative; height: 640px; border-radius: 4px; overflow:hidden; }
+  .table-hero .cap{
+    position:absolute; bottom:20px; left:20px; z-index:2;
+    background: rgba(20,18,12,.62); color:var(--cream);
+    padding:8px 14px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; border-radius:2px;
+  }
+  .table-below{ display:grid; grid-template-columns: 1.4fr 1fr; gap:40px; margin-top: 40px; align-items:end;}
+  .table-below .text p{ font-size:17px; color:var(--ink-soft); max-width:50ch; }
+  .table-below figure{ aspect-ratio: 4/5; border-radius:3px; overflow:hidden; background:var(--stone); position:relative;}
 
-  /* FINAL CTA */
-  .closing{position:relative; color:#f3ecd9; text-align:center;}
-  .closing-bg{position:absolute; inset:0; z-index:0;}
-  .closing-bg img{width:100%; height:100%; object-fit:cover;}
-  .closing-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,15,11,0.5), rgba(18,15,11,0.82));}
-  .closing .wrap{position:relative; z-index:1; padding-top:130px; padding-bottom:130px; max-width:700px;}
-  .closing .label{color:#cbb98f; margin-bottom:22px;}
-  .closing h2{color:#f7f1e0; font-size:clamp(42px,5.6vw,64px);}
-  .closing p{color:#e2dcc4; font-size:19px; margin:36px auto 0; max-width:48ch;}
-  .cta-row{margin-top:44px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
-  .closing .btn.primary{background:var(--clay); border-color:var(--clay); color:#f7f1e0;}
-  .closing .btn.primary:hover{background:#c9885f; border-color:#c9885f;}
+  /* TRADITION */
+  .tradition{ background: var(--olive-deep); color: var(--cream); }
+  .tradition .eyebrow{ color: var(--gold); }
+  .tradition .eyebrow::before{ background:var(--gold); }
+  .tradition h2{ color: var(--cream); }
+  .trad-grid{ display:grid; grid-template-columns: 1fr 1.1fr; gap:56px; align-items:center; }
+  .trad-grid figure{ aspect-ratio: 4/3; border-radius:3px; overflow:hidden; }
+  .trad-text p{ font-size:17px; color: rgba(247,241,225,.82); max-width:48ch; margin-top:18px;}
 
-  footer{background:var(--ink); color:#a79c86; padding:40px 0 44px;}
-  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
-  footer .fbrand{font-family:'Cormorant Garamond', serif; color:#f3ecd9; font-size:1.1rem; letter-spacing:0.06em;}
-  footer .fline{font-size:12px; letter-spacing:0.08em; text-transform:uppercase;}
+  /* MILESTONES */
+  .milestones{ }
+  .mile-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 20px;}
+  .mile-col h4{
+    font-family:'Work Sans', sans-serif; font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
+    color: var(--ink-soft); font-weight:600; margin-bottom:18px; padding-bottom:10px;
+    border-bottom: 1px solid rgba(43,38,32,.15);
+  }
+  .mile-item{ display:flex; align-items:flex-start; gap:14px; padding: 12px 0; font-size:15.5px; }
+  .mile-item .mark{
+    width:22px; height:22px; border-radius:50%; flex:0 0 22px; margin-top:2px;
+    display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;
+  }
+  .mile-col.done .mark{ background: var(--olive); color: var(--cream); }
+  .mile-col.planned .mark{ background:transparent; border: 1.5px solid var(--clay-deep); color: var(--clay-deep); }
+  .cta-final{ text-align:center; margin-top: 90px; }
+  .cta-final h2{ font-size: clamp(30px,4vw,46px); }
+  .cta-final .btns{ display:flex; gap:16px; justify-content:center; margin-top:30px; }
+  .btn.solid-clay{ background: var(--clay); border-color:var(--clay); color:var(--cream); }
+  .btn.solid-clay:hover{ background: var(--clay-deep); }
+  .btn.ghost{ background:transparent; color:var(--olive-deep); border-color: var(--olive-deep); }
+  .btn.ghost:hover{ background: var(--olive-deep); color:var(--cream); }
+
+  footer{ padding: 50px 0; text-align:center; color: var(--ink-soft); font-size:13px; background: var(--bg-warm); }
+
+  @media (max-width: 900px){
+    .land-grid{ grid-template-columns: 1fr; }
+    .stay-grid{ grid-template-columns: 1fr; }
+    .stay-figs{ order:-1; }
+    .exp-grid{ grid-template-columns: 1fr 1fr; }
+    .table-below{ grid-template-columns: 1fr; }
+    .trad-grid{ grid-template-columns: 1fr; }
+    .mile-grid{ grid-template-columns: 1fr; gap:30px; }
+    nav.links{ display:none; }
+    .wrap, .nav-inner{ padding: 0 22px; }
+    section{ padding: 70px 0; }
+  }
 </style>
 </head>
 <body>
 
-<header id="siteHeader">
-  <div class="wrap">
-    <div class="brand">
-      <svg viewBox="0 0 200 200" aria-hidden="true">
-        <g fill="none" stroke="var(--clay)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="100" y1="26" x2="100" y2="42"/>
-          <path d="M55,178 L58,122 C58,74 78,34 100,34 C122,34 142,74 142,122 L145,178"/>
-          <path d="M86,178 L86,140 C86,124 92,114 100,114 C108,114 114,124 114,140 L114,178"/>
-        </g>
-      </svg>
-      NOUALLA
-    </div>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><img src="logo/noualla-icon.svg" alt="Noualla" style="height:30px; width:auto; vertical-align:middle; margin-right:11px; position:relative; top:-1px;">Noualla</div>
     <nav class="links">
-      <a href="#story">Story</a>
       <a href="#land">The Land</a>
-      <a href="#experience">Experience</a>
-      <a href="#community">Craft</a>
-      <a href="#contact">Contact</a>
+      <a href="#stay">Stay</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#table">Table</a>
+      <a href="#journey">Journey</a>
     </nav>
+    <a href="#journey" class="btn" style="padding:10px 22px;">Follow Noualla</a>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"><img src="images/house-sunset.jpg" alt="A bungalow at dusk, surrounded by papaya and banana plants, overlooking the Rif hills"></div>
-  <div class="hero-inner">
-    <div class="label reveal">Northern Morocco · Mediterranean Coast</div>
-    <h1 class="reveal">NOUALLA</h1>
-    <p class="sub reveal">A regenerative retreat growing from the hills of Northern Morocco.</p>
-    <p class="small reveal">A future place of rest, connection and discovery, built slowly on restored agricultural land overlooking the Mediterranean.</p>
-    <div class="hero-actions reveal">
-      <a href="#story" class="btn primary">Discover Noualla</a>
-      <a href="#contact" class="btn ghost">Follow the Journey</a>
-    </div>
+  <img src="images/hero.png" alt="Noualla at golden hour, hills of Northern Morocco">
+  <div class="hero-content">
+    <div class="eyebrow">Noualla — Northern Morocco</div>
+    <h1>A regenerative retreat taking shape in the hills of Northern Morocco</h1>
+    <p class="sub">Olive terraces, restored soil, and Moroccan hospitality — grown slowly, on land that's coming back to life.</p>
+    <div><a href="#land" class="btn outline">Discover Noualla</a></div>
   </div>
 </section>
 
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="wrap">
-    <div class="story-grid">
-      <div class="story-text reveal">
-        <div class="label">A Place Returning to Life</div>
-        <h2 style="margin-top:16px;">From forgotten land to a living landscape.</h2>
-        <div style="margin-top:40px;">
-          <p>Noualla began with a simple idea: that damaged land can heal, and that hospitality can become a force for regeneration.</p>
-          <p>Over years of restoring soil, planting trees and rebuilding natural systems, this hillside has slowly transformed into a living ecosystem.</p>
-        </div>
-        <div class="label story-detail">Northern Morocco · Mediterranean Hills · 9,300 m² of Restored Land</div>
-      </div>
-      <div class="story-photo reveal">
-        <div class="ph"><img src="images/meadow.jpg" alt="Wildflower meadow with a young olive tree on the restored hillside"></div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="terrace-divider">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,26 L150,26 L150,14 L350,14 L350,4 L600,4 L600,18 L850,18 L850,8 L1050,8 L1050,22 L1200,22 L1200,40 Z" fill="#EEE3CB"/></svg>
+</div>
 
-<!-- THE LAND -->
-<section class="land" id="land">
+<section id="land">
   <div class="wrap">
-    <div class="land-photos reveal">
-      <div class="ph big"><img src="images/valley-2021.jpg" alt="View across the valley toward the Mediterranean coast and the Rif mountains"></div>
-      <div class="ph small"><img src="images/worker-lavender.jpg" alt="A worker tending lavender on the hillside"></div>
+    <div class="section-head">
+      <div class="eyebrow">The Land</div>
+      <h2>From forgotten land to living ecosystem</h2>
+      <p class="intro">Once degraded by erosion, this hillside is returning to life through regenerative agriculture, water restoration, and biodiversity.</p>
     </div>
-    <div class="section-head reveal">
-      <div class="label">The Land</div>
-      <h2>A living landscape</h2>
-    </div>
-    <div class="land-blocks">
-      <div class="land-block reveal">
-        <div class="num">Water</div>
-        <h3>Restoring natural cycles</h3>
-        <p>Swales, terraces and greywater systems capture and preserve water in a dry Mediterranean climate.</p>
+    <div class="land-grid">
+      <div class="land-card">
+        <figure><img src="images/land-restoring.jpg" alt="Restoring the land — terraces and gardens"></figure>
+        <h3>Restoring the land</h3>
+        <p>Rebuilding soil through terraces, organic practice, and traditional knowledge.</p>
       </div>
-      <div class="land-block reveal">
-        <div class="num">Soil</div>
-        <h3>Rebuilding fertility</h3>
-        <p>Through composting, organic practices and biodiversity, exhausted soils are becoming productive again.</p>
+      <div class="land-card">
+        <figure><img src="images/land-ecosystem.jpg" alt="Bees pollinating a sunflower on the land"></figure>
+        <h3>A living ecosystem</h3>
+        <p>A landscape where plants, pollinators, and wildlife are returning.</p>
       </div>
-      <div class="land-block reveal">
-        <div class="num">Biodiversity</div>
-        <h3>Growing a Mediterranean ecosystem</h3>
-        <p>Olive trees, fruit gardens and native plants create a refuge for wildlife and future harvests.</p>
+      <div class="land-card">
+        <figure><img src="images/land-seasons.jpg" alt="Planting heirloom sunflowers in the garden"></figure>
+        <h3>Growing with the seasons</h3>
+        <p>A Mediterranean landscape that feeds people while following nature's rhythm.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE EXPERIENCE -->
-<section class="experience" id="experience">
+<div class="terrace-divider">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,14 L200,14 L200,24 L420,24 L420,10 L680,10 L680,30 L900,30 L900,16 L1200,16 L1200,0 Z" fill="#E7D9BC"/></svg>
+</div>
+
+<section id="stay" class="stay-bg">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="label">The Noualla Experience</div>
-      <h2>A future rooted in simplicity</h2>
-      <p class="lede">Noualla will welcome guests into a slower rhythm — shaped by nature, traditional knowledge and meaningful encounters.</p>
+    <div class="stay-grid">
+      <div class="stay-figs">
+        <figure><img src="images/stay-exterior.png" alt="Future accommodation concept — bungalow exterior"><span class="fig-tag">Concept</span></figure>
+        <figure><img src="images/stay-interior.png" alt="Interior concept — bungalow bedroom"><span class="fig-tag">Concept</span></figure>
+      </div>
+      <div class="stay-text">
+        <div class="eyebrow">Vision</div>
+        <h2>A future rooted in simplicity</h2>
+        <p class="sub">Handcrafted spaces designed to blend with the landscape.</p>
+        <p class="body">Small handcrafted cabins imagined in local materials, natural textures, and traditional Moroccan craftsmanship. Quiet spaces designed around comfort, simplicity, and connection with nature.</p>
+        <p class="body" style="margin-top:14px; font-size:13.5px; font-style:italic; color:var(--clay-deep);">These images are early design concepts, not existing rooms.</p>
+      </div>
     </div>
-    <p class="exp-note reveal">Future experiences will include —</p>
+  </div>
+</section>
+
+<div class="terrace-divider">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,26 L150,26 L150,14 L350,14 L350,4 L600,4 L600,18 L850,18 L850,8 L1050,8 L1050,22 L1200,22 L1200,40 Z" fill="#EEE3CB"/></svg>
+</div>
+
+<section id="experiences">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experiences</div>
+      <h2>More than a stay</h2>
+      <p class="intro">A way to reconnect with land, culture, and tradition.</p>
+    </div>
     <div class="exp-grid">
-      <div class="exp-card reveal">
-        <div class="ph"><img src="images/herb-bed.jpg" alt="A bed of rosemary, sage and bay laurel grown on site"></div>
-        <h3>Women-led cooking experiences</h3>
-        <p>Discover Moroccan cuisine through intimate meals prepared with local ingredients and traditional knowledge.</p>
+      <div class="exp-card">
+        <figure style="position:relative;"><img src="images/exp-culinary.png" alt="Women-led culinary experience, preparing a shared meal"><span class="fig-tag" style="position:absolute; bottom:10px; left:10px;">Concept</span></figure>
+        <h3>Women-led culinary experiences</h3>
+        <p>Traditional recipes, garden ingredients, local knowledge.</p>
       </div>
-      <div class="exp-card reveal">
-        <div class="ph"><img src="images/pottery-nouala.jpg" alt="Two local women shaping pottery together inside a traditional nouala"></div>
+      <div class="exp-card">
+        <figure><img src="images/exp-pottery.jpg" alt="Women-led pottery workshop, hand-thrown ceramics"></figure>
         <h3>Women-led pottery workshops</h3>
-        <p>Learn from local artisans and experience the craft traditions that connect generations.</p>
+        <p>Moroccan craftsmanship through handmade ceramics.</p>
       </div>
-      <div class="exp-card reveal">
-        <div class="ph"><img src="images/vegetable-terraces.jpg" alt="Terraced vegetable gardens on the hillside"></div>
+      <div class="exp-card">
+        <figure><img src="images/exp-farmwalks.jpg" alt="Path through the garden terraces"></figure>
         <h3>Farm walks</h3>
-        <p>Explore the gardens, terraces and ecosystems that make the land come alive.</p>
+        <p>Plants, farming practices, and the living landscape.</p>
       </div>
-      <div class="exp-card reveal">
-        <div class="ph"><img src="images/planting-2022.jpg" alt="Planting one of the first olive trees on the hillside"></div>
-        <h3>Seasonal harvest experiences</h3>
-        <p>Participate in planting, harvesting and the rhythms of agricultural life.</p>
+      <div class="exp-card">
+        <figure><img src="images/exp-harvest.jpg" alt="Basket of seasonal harvest fruit"></figure>
+        <h3>Seasonal harvests</h3>
+        <p>Participate in the rhythms of the land.</p>
       </div>
-      <div class="exp-card reveal">
-        <div class="ph"><img src="images/garden-path.jpg" alt="A quiet dusk path through the garden terraces"></div>
-        <h3>Nature &amp; night experiences</h3>
-        <p>Stargazing, quiet walks and discovering the hidden life of the Mediterranean hills.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CRAFT & COMMUNITY -->
-<section class="community" id="community">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="label">Craft &amp; Community</div>
-      <h2>More than a place to stay</h2>
-      <p class="lede">Noualla is built around relationships — with the land, with local makers and with the people who carry Morocco's traditions forward.</p>
-    </div>
-    <div class="comm-photos reveal">
-      <div>
-        <div class="ph"><img src="images/pottery-nouala.jpg" alt="Local artisans at the pottery wheel"></div>
-        <div class="comm-cap">Pottery</div>
-      </div>
-      <div>
-        <div class="ph"><img src="images/sunflower-seeds.jpg" alt="Heirloom seeds grown for the garden"></div>
-        <div class="comm-cap">Food</div>
-      </div>
-      <div>
-        <div class="ph"><img src="images/reed-roof-building.jpg" alt="Craftsmen hand-weaving a traditional cane and reed roof"></div>
-        <div class="comm-cap">Craftsmanship</div>
+      <div class="exp-card">
+        <figure style="position:relative;"><img src="images/exp-astronomy.png" alt="Guests stargazing under the Milky Way"><span class="fig-tag" style="position:absolute; bottom:10px; left:10px;">Concept</span></figure>
+        <h3>Nature & astronomy nights</h3>
+        <p>Clear skies, silence, and natural beauty after sunset.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CURRENTLY IN DEVELOPMENT -->
-<section class="development" id="development">
+<div class="terrace-divider">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,14 L200,14 L200,24 L420,24 L420,10 L680,10 L680,30 L900,30 L900,16 L1200,16 L1200,0 Z" fill="#E7D9BC"/></svg>
+</div>
+
+<section id="table" class="stay-bg table-section">
   <div class="wrap">
-    <div class="dev-grid">
-      <div class="dev-photos reveal">
-        <div class="ph big"><img src="images/building-construction.jpg" alt="The first bungalow under construction on the hillside"></div>
-        <div class="ph small"><img src="images/interior-nook.jpg" alt="A quiet window nook with tea and a view over the hills"></div>
+    <div class="section-head">
+      <div class="eyebrow">The Noualla Table</div>
+      <h2>Shared moments around the land</h2>
+    </div>
+    <div class="table-hero">
+      <img src="images/table-main.png" alt="Outdoor dining beneath olive trees at sunset">
+      <div class="cap">Future hospitality experience concept</div>
+    </div>
+    <div class="table-below">
+      <div class="text">
+        <p>Meals from the gardens, shared beneath olive trees, in the spirit of Moroccan hospitality.</p>
       </div>
-      <div class="dev-text reveal">
-        <div class="label">Currently in Development</div>
-        <h2 style="margin-top:16px;">A place taking shape slowly</h2>
-        <div style="margin-top:40px;">
-          <p>Noualla is intentionally being built step by step. Every tree planted, every terrace restored and every detail created brings the vision closer to life.</p>
-        </div>
-        <div class="phase-label">Current phase</div>
-        <ul class="phase-list">
-          <li><span class="ck">✓</span> Regenerative gardens established</li>
-          <li><span class="ck">✓</span> Water systems developed</li>
-          <li><span class="ck">✓</span> Native and fruit trees growing</li>
-          <li><span class="ck">✓</span> Future hospitality spaces being planned</li>
-        </ul>
-        <p class="dev-closing">We believe meaningful places cannot be rushed.</p>
+      <figure>
+        <img src="images/table-relax.png" alt="A quiet corner at Noualla, today">
+        <div class="fig-tag" style="position:absolute; bottom:10px; left:10px;">At Noualla, today</div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="tradition">
+  <div class="wrap">
+    <div class="trad-grid">
+      <figure><img src="images/tradition-pottery.jpg" alt="Pottery close-up, hands shaping clay"></figure>
+      <div class="trad-text">
+        <div class="eyebrow">Community</div>
+        <h2>Rooted in Moroccan traditions</h2>
+        <p>Noualla is building lasting partnerships with local artisans, farmers, and women-led initiatives — the people whose knowledge shapes everything on this land.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="closing" id="contact">
-  <div class="closing-bg"><img src="images/rainbow.jpg" alt="A rainbow over the restored hillside after rain"></div>
+<div class="terrace-divider">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,26 L150,26 L150,14 L350,14 L350,4 L600,4 L600,18 L850,18 L850,8 L1050,8 L1050,22 L1200,22 L1200,40 Z" fill="#EEE3CB"/></svg>
+</div>
+
+<section id="journey" class="milestones">
   <div class="wrap">
-    <div class="label reveal">Follow the Journey</div>
-    <h2 class="reveal">The first guests have not arrived yet.</h2>
-    <p class="reveal">Follow the story as Noualla grows.</p>
-    <div class="cta-row reveal">
-      <a href="https://instagram.com/noualla" class="btn primary" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:info@noualla.com" class="btn ghost">Contact</a>
+    <div class="section-head">
+      <div class="eyebrow">Growing Slowly, With Purpose</div>
+      <h2>Growing slowly, with purpose</h2>
+      <p class="intro">Noualla is being created carefully, respecting the land and preserving the character of this place.</p>
+    </div>
+    <div class="mile-grid">
+      <div class="mile-col done">
+        <h4>Completed</h4>
+        <div class="mile-item"><span class="mark">✓</span> Regenerative gardens established</div>
+        <div class="mile-item"><span class="mark">✓</span> Water conservation systems underway</div>
+        <div class="mile-item"><span class="mark">✓</span> Mediterranean and native trees planted</div>
+      </div>
+      <div class="mile-col planned">
+        <h4>Planned</h4>
+        <div class="mile-item"><span class="mark">○</span> Solar energy planned</div>
+        <div class="mile-item"><span class="mark">○</span> Future cabins designed</div>
+        <div class="mile-item"><span class="mark">○</span> Local experiences in development</div>
+      </div>
+    </div>
+
+    <div class="cta-final">
+      <h2>Follow the journey</h2>
+      <div class="btns">
+        <a href="#" class="btn solid-clay">Follow Noualla</a>
+        <a href="#" class="btn ghost">Contact</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="fbrand">NOUALLA</div>
-    <div class="fline">Rif Region · Northern Morocco</div>
-  </div>
+  Noualla — a regenerative destination in the hills of Northern Morocco.
 </footer>
-
-<script>
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
 
 </body>
 </html>
