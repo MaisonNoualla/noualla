@@ -351,3 +351,19 @@
 
 .map-status-legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:18px;}
 
+/* ---- Phase-one concept visualization gallery (inside "A Plan Taking Shape") ---- */
+.concept-gallery{margin:56px 0 60px;}
+.concept-intro h3{font-size:clamp(26px,3.2vw,34px); font-weight:500; margin-bottom:18px;}
+.concept-intro p{color:var(--ink-soft); font-size:16.5px; margin-bottom:14px; max-width:70ch;}
+.concept-intro .concept-disclaimer{font-style:italic; font-size:14.5px; color:var(--ink-soft); opacity:0.9;}
+.concept-img-wrap{position:relative; overflow:hidden; background:#d9cba8;}
+.concept-img-wrap img{width:100%; height:auto; display:block; object-fit:initial;}
+.concept-label{position:absolute; left:14px; bottom:14px; z-index:2; font-family:'Inter',sans-serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#f7f1e0; background:rgba(20,17,12,0.72); padding:7px 12px; line-height:1;}
+.concept-overview-figure{margin-top:36px;}
+.concept-caption{margin-top:16px; max-width:70ch;}
+.concept-caption h4{font-size:19px; font-weight:500; margin-bottom:6px; letter-spacing:-0.01em;}
+.concept-caption p{color:var(--ink-soft); font-size:15px; margin:0;}
+.concept-row{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:36px;}
+@media (max-width:820px){.concept-row{grid-template-columns:1fr; gap:40px;}}
+.concept-row figure{margin:0;}
+
