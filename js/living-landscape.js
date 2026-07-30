@@ -87,54 +87,11 @@
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
   });
 
-  /* ---------- Early-interest form ---------- */
-  var form = document.getElementById('earlyInterestForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Honeypot spam check — if filled, silently drop
-      var honeypot = form.querySelector('input[name="company"]');
-      if (honeypot && honeypot.value) return;
-
-      var statusBox = document.getElementById('eiStatus');
-
-      var name = form.querySelector('#eiName').value.trim();
-      var email = form.querySelector('#eiEmail').value.trim();
-      var country = form.querySelector('#eiCountry').value.trim();
-      var stayLength = form.querySelector('#eiStayLength').value;
-      var budget = form.querySelector('input[name="budget"]:checked');
-      var activities = Array.from(form.querySelectorAll('input[name="activities"]:checked')).map(function (c) { return c.value; });
-      var message = form.querySelector('#eiMessage').value.trim();
-
-      if (!name || !email) {
-        statusBox.textContent = 'Please fill in your name and email before sending.';
-        statusBox.classList.add('show');
-        return;
-      }
-
-      // NOTE: This site has no connected form backend yet (no Formspree /
-      // Netlify Forms endpoint configured). Rather than silently discarding
-      // the submission, we open the visitor's email client with the
-      // responses pre-filled, so the message genuinely reaches Noualla.
-      // Replace this with a real form provider before launch — see README.
-      var bodyLines = [
-        'Name: ' + name,
-        'Email: ' + email,
-        'Country: ' + country,
-        'Preferred stay length: ' + stayLength,
-        'Activities of interest: ' + (activities.length ? activities.join(', ') : '—'),
-        'Expected nightly budget: ' + (budget ? budget.value : '—'),
-        'Message: ' + (message || '—')
-      ];
-      var mailto = 'mailto:info@noualla.com?subject=' + encodeURIComponent('Early interest — Noualla') +
-        '&body=' + encodeURIComponent(bodyLines.join('\n'));
-
-      window.location.href = mailto;
-      statusBox.textContent = 'Thank you. Your feedback will help shape Noualla\'s first guest experience. Your email app should now open with your details ready to send — please hit send there to complete it.';
-      statusBox.classList.add('show');
-      form.reset();
-    });
-  }
+  /* NOTE: The homepage's early-interest form was replaced with a simple
+     "Contact Noualla" mailto link, since no working form backend was
+     available and a non-functional form should never be published.
+     If a real form is reintroduced later with a proper backend
+     (Formspree, Netlify Forms, etc.), its submit-handling logic can go
+     here. */
 
 })();
