@@ -105,8 +105,9 @@
   .community .label{color:#c9c39f;}
   .community .section-head h2{color:#f4efe0;}
   .community .section-head p.lede{color:#d7d2ba;}
-  .comm-photos{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  @media (max-width:700px){.comm-photos{grid-template-columns:1fr;}}
+  .comm-photos{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:900px){.comm-photos{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.comm-photos{grid-template-columns:1fr;}}
   .comm-photos .ph{aspect-ratio:3/4;}
   .comm-cap{margin-top:12px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#c9c39f;}
 
